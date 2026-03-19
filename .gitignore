@@ -24,6 +24,9 @@ _ide_helper_models.php
 /.fleet
 /.vscode
 
+# Claude
+.claude/settings.local.json
+
 # Misc
 phpunit.xml
 phpstan.neon

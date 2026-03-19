@@ -10,7 +10,7 @@ use Spatie\LaravelData\Data;
 class CustomsDetailsData extends Data
 {
     /**
-     * @param array<int, CommodityData> $items
+     * @param  array<int, CommodityData>  $items
      */
     public function __construct(
         public ExportType $exportType,

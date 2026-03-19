@@ -30,7 +30,7 @@ class DhlParcelAuthenticator implements Authenticator
 
         $pendingRequest->headers()->add(
             'Authorization',
-            'Basic ' . base64_encode("$this->username:$this->password")
+            'Basic '.base64_encode("$this->username:$this->password")
         );
     }
 }

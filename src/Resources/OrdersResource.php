@@ -45,7 +45,7 @@ class OrdersResource extends BaseResource
     }
 
     /**
-     * @param array<int, string> $shipments
+     * @param  array<int, string>  $shipments
      */
     public function get(
         array $shipments,
@@ -66,7 +66,7 @@ class OrdersResource extends BaseResource
     }
 
     /**
-     * @param array<int, string> $shipments
+     * @param  array<int, string>  $shipments
      */
     public function delete(
         string $profile,

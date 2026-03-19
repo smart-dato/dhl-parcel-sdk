@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class LabelDataResponseData extends Data
 {
     /**
-     * @param array<int, ResponseItemData>|null $items
+     * @param  array<int, ResponseItemData>|null  $items
      */
     public function __construct(
         public ?RequestStatusData $status = null,

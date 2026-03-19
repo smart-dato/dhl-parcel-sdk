@@ -15,7 +15,7 @@ class GetOrdersRequest extends Request
     protected Method $method = Method::GET;
 
     /**
-     * @param array<int, string> $shipments
+     * @param  array<int, string>  $shipments
      */
     public function __construct(
         protected array $shipments,

@@ -7,7 +7,7 @@ use Spatie\LaravelData\Data;
 class ManifestRequestData extends Data
 {
     /**
-     * @param array<int, string>|null $shipmentNumbers
+     * @param  array<int, string>|null  $shipmentNumbers
      */
     public function __construct(
         public string $profile,

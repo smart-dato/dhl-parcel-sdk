@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class ShipmentOrderRequestData extends Data
 {
     /**
-     * @param array<int, ShipmentData> $shipments
+     * @param  array<int, ShipmentData>  $shipments
      */
     public function __construct(
         public string $profile,

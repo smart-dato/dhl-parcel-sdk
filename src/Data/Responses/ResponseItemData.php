@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class ResponseItemData extends Data
 {
     /**
-     * @param array<int, ValidationMessageData>|null $validationMessages
+     * @param  array<int, ValidationMessageData>|null  $validationMessages
      */
     public function __construct(
         public RequestStatusData $sstatus,

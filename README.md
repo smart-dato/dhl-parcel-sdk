@@ -129,17 +129,35 @@ $response = DhlParcel::manifests()->create(
 $pdfContent = DhlParcel::labels()->download(token: 'label-token-from-response');
 ```
 
-### Multi-tenant usage
+### Using without the Facade
+
+You can create a `DhlParcel` instance directly using `DhlParcel::make()`. This is useful when you prefer not to use the facade, need different credentials per request, or want to support multi-tenant setups:
 
 ```php
 use SmartDato\DhlParcel\DhlParcel;
 
+// With API key
 $dhl = DhlParcel::make([
-    'api_key' => 'tenant-specific-key',
+    'api_key' => 'your-api-key',
     'sandbox' => true,
 ]);
 
+// Or with Basic Auth
+$dhl = DhlParcel::make([
+    'username' => 'your-username',
+    'password' => 'your-password',
+]);
+
 $response = $dhl->orders()->create($data);
+```
+
+You can also optionally pass a custom `base_url` if needed:
+
+```php
+$dhl = DhlParcel::make([
+    'api_key' => 'your-api-key',
+    'base_url' => 'https://api-eu.dhl.com/parcel/de/shipping/v2',
+]);
 ```
 
 ## Available products

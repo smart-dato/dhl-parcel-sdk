@@ -12,16 +12,16 @@ class DhlParcelAuthenticator implements Authenticator
         protected ?string $apiKey = null,
         protected ?string $username = null,
         protected ?string $password = null,
-    ) {
+    ) {}
+
+    public function set(PendingRequest $pendingRequest): void
+    {
         if (! $this->apiKey && ! ($this->username && $this->password)) {
             throw new InvalidArgumentException(
                 'DHL Parcel authentication requires either an API key or username/password credentials.'
             );
         }
-    }
 
-    public function set(PendingRequest $pendingRequest): void
-    {
         if ($this->apiKey) {
             $pendingRequest->headers()->add('dhl-api-key', $this->apiKey);
 

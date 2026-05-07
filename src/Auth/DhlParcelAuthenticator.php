@@ -24,13 +24,13 @@ class DhlParcelAuthenticator implements Authenticator
 
         if ($this->apiKey) {
             $pendingRequest->headers()->add('dhl-api-key', $this->apiKey);
-
-            return;
         }
 
-        $pendingRequest->headers()->add(
-            'Authorization',
-            'Basic '.base64_encode("$this->username:$this->password")
-        );
+        if ($this->username && $this->password) {
+            $pendingRequest->headers()->add(
+                'Authorization',
+                'Basic '.base64_encode("$this->username:$this->password")
+            );
+        }
     }
 }

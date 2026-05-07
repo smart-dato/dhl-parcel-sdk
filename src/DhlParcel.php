@@ -3,6 +3,7 @@
 namespace SmartDato\DhlParcel;
 
 use SmartDato\DhlParcel\Auth\DhlParcelAuthenticator;
+use SmartDato\DhlParcel\Auth\OAuthConnector;
 use SmartDato\DhlParcel\Connectors\DhlParcelConnector;
 use SmartDato\DhlParcel\Resources\LabelsResource;
 use SmartDato\DhlParcel\Resources\ManifestsResource;
@@ -40,21 +41,27 @@ class DhlParcel
      *     api_key?: string|null,
      *     username?: string|null,
      *     password?: string|null,
+     *     client_secret?: string|null,
      *     base_url?: string,
+     *     oauth_base_url?: string|null,
      *     sandbox?: bool,
      * } $config
      */
     public static function make(array $config = []): self
     {
+        $sandbox = $config['sandbox'] ?? false;
+
         $authenticator = new DhlParcelAuthenticator(
             apiKey: $config['api_key'] ?? null,
             username: $config['username'] ?? null,
             password: $config['password'] ?? null,
+            clientSecret: $config['client_secret'] ?? null,
+            oauthBaseUrl: OAuthConnector::resolveUrl($config['oauth_base_url'] ?? null, $sandbox),
         );
 
         $baseUrl = DhlParcelConnector::resolveUrl(
             $config['base_url'] ?? null,
-            $config['sandbox'] ?? false,
+            $sandbox,
         );
 
         $connector = new DhlParcelConnector(

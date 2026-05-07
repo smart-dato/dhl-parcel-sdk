@@ -3,6 +3,7 @@
 namespace SmartDato\DhlParcel;
 
 use SmartDato\DhlParcel\Auth\DhlParcelAuthenticator;
+use SmartDato\DhlParcel\Auth\OAuthConnector;
 use SmartDato\DhlParcel\Connectors\DhlParcelConnector;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -23,6 +24,11 @@ class DhlParcelServiceProvider extends PackageServiceProvider
                 apiKey: config('dhl-parcel-sdk.api_key'),
                 username: config('dhl-parcel-sdk.username'),
                 password: config('dhl-parcel-sdk.password'),
+                clientSecret: config('dhl-parcel-sdk.client_secret'),
+                oauthBaseUrl: OAuthConnector::resolveUrl(
+                    config('dhl-parcel-sdk.oauth_base_url'),
+                    config('dhl-parcel-sdk.sandbox', false),
+                ),
             );
         });
 

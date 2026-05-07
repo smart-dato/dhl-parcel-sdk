@@ -22,14 +22,27 @@ php artisan vendor:publish --tag="dhl-parcel-sdk-config"
 Add your credentials to `.env`:
 
 ```env
-DHL_PARCEL_API_KEY=your-api-key
-# Or use Basic Auth instead:
+# OAuth2 (recommended — Basic Auth is deprecated by DHL):
+DHL_PARCEL_API_KEY=your-client-id
+DHL_PARCEL_CLIENT_SECRET=your-client-secret
+DHL_PARCEL_USERNAME=your-business-customer-username
+DHL_PARCEL_PASSWORD=your-business-customer-password
+
+# Or legacy API key only:
+# DHL_PARCEL_API_KEY=your-api-key
+
+# Or legacy Basic Auth:
 # DHL_PARCEL_USERNAME=your-username
 # DHL_PARCEL_PASSWORD=your-password
 
 # Enable sandbox for testing:
 # DHL_PARCEL_SANDBOX=true
 ```
+
+OAuth2 mode is enabled automatically when `DHL_PARCEL_CLIENT_SECRET` is set
+together with the API key, username and password. The SDK then exchanges the
+credentials for a Bearer token against the DHL ROPC token endpoint and caches
+the token in memory until it expires.
 
 ## Usage
 
@@ -136,13 +149,22 @@ You can create a `DhlParcel` instance directly using `DhlParcel::make()`. This i
 ```php
 use SmartDato\DhlParcel\DhlParcel;
 
-// With API key
+// With OAuth2 (recommended)
+$dhl = DhlParcel::make([
+    'api_key' => 'your-client-id',
+    'client_secret' => 'your-client-secret',
+    'username' => 'your-business-customer-username',
+    'password' => 'your-business-customer-password',
+    'sandbox' => true,
+]);
+
+// Or with legacy API key
 $dhl = DhlParcel::make([
     'api_key' => 'your-api-key',
     'sandbox' => true,
 ]);
 
-// Or with Basic Auth
+// Or with legacy Basic Auth
 $dhl = DhlParcel::make([
     'username' => 'your-username',
     'password' => 'your-password',

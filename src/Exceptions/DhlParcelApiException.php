@@ -29,12 +29,20 @@ class DhlParcelApiException extends Exception
             );
         }
 
-        $status = $data['status'] ?? $data;
+        $status = is_array($data['status'] ?? null) ? $data['status'] : $data;
+
+        $title = $status['title'] ?? "DHL API error: {$response->status()}";
+        $detail = $status['detail'] ?? null;
+        $code = $status['statusCode'] ?? null;
+        if ($code === null) {
+            $rawStatus = $data['status'] ?? null;
+            $code = is_int($rawStatus) ? $rawStatus : $response->status();
+        }
 
         return new self(
-            message: $status['title'] ?? "DHL API error: {$response->status()}",
-            code: $status['statusCode'] ?? $status['status'] ?? $response->status(),
-            detail: $status['detail'] ?? null,
+            message: $detail !== null ? "{$title}: {$detail}" : $title,
+            code: (int) $code,
+            detail: $detail,
             instance: $status['instance'] ?? null,
         );
     }

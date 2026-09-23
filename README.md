@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/smart-dato/dhl-parcel-sdk.svg?style=flat-square)](https://packagist.org/packages/smart-dato/dhl-parcel-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/dhl-parcel-sdk/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/smart-dato/dhl-parcel-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/dhl-parcel-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/smart-dato/dhl-parcel-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/dhl-parcel-sdk/code-style.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/smart-dato/dhl-parcel-sdk/actions?query=workflow%3A%22Code+style%22+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/smart-dato/dhl-parcel-sdk.svg?style=flat-square)](https://packagist.org/packages/smart-dato/dhl-parcel-sdk)
 
 A Laravel package for the [DHL Parcel DE Shipping v2 API](https://developer.dhl.com/api-reference/parcel-de-shipping-post-parcel-germany-v2). Create shipments, retrieve labels, manage manifests, and more. Built on [Saloon](https://docs.saloon.dev) and [Spatie Laravel Data](https://spatie.be/docs/laravel-data).
@@ -202,10 +202,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
